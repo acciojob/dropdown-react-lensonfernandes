@@ -152,13 +152,13 @@ function App()
 
 	let onCityChangeHandler = (e) =>{
 		setSelectedCity(e.target.value)
-		console.log(selectedState)
+		
 
 
 	}
 	let onLandChangeHandler = (e) =>{
 		setSelectedLand(e.target.value)
-		console.log(selectedState)
+		
 
 	}
 	
