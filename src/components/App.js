@@ -140,10 +140,62 @@ const states = [{
 
 function App() 
 {
+	const [selectedState, setSelectedState] = useState("");
+	const [selectedCity, setSelectedCity] = useState("");
+	const [selectedLand, setSelectedLand] = useState("");
+
+	let  onOptionChangeHandler =(e)=>{
+		
+		setSelectedState(e.target.value)
+
+	}
+
+	let onCityChangeHandler = (e) =>{
+		setSelectedCity(e.target.value)
+		console.log(selectedState)
+
+
+	}
+	let onLandChangeHandler = (e) =>{
+		setSelectedLand(e.target.value)
+		console.log(selectedState)
+
+	}
+	
 	// Do not alter/remove main div
 	return (
 	<div id="main">
-		
+		<select onChange={onOptionChangeHandler}>
+			<option>
+				State name
+			</option>
+			{
+				states.map((option, index)=> {
+					return <option key={index} value={index}>{option.name} </option>
+				})
+			}
+		</select>
+		<select onChange={onCityChangeHandler}>
+			<option>Select City </option>
+			{
+				states[selectedState]?.city.map((option, index)=> {
+					return <option key={index} value={index}>{option.name}</option>
+				})
+			
+			}
+		</select>
+		<select onChange={onLandChangeHandler}>
+			<option>Select Landmark </option>
+			{
+				states[selectedState]?.city[selectedCity]?.landmarks.map((option, index)=> {
+					return <option key={index} value={index}>{option.name}</option>
+				})
+			
+			}
+		</select>
+	
+		{/* //<select>City</select>
+		//<select>Landmark</select> */}
 	</div>
 	);
 }
