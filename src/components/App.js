@@ -140,9 +140,9 @@ const states = [{
 
 function App() 
 {
-	const [selectedState, setSelectedState] = useState("Madhya Pradesh");
-	const [selectedCity, setSelectedCity] = useState("");
-	const [selectedLand, setSelectedLand] = useState("");
+	const [selectedState, setSelectedState] = useState(0);
+	const [selectedCity, setSelectedCity] = useState(0);
+	const [selectedLand, setSelectedLand] = useState(0);
 
 	let  onOptionChangeHandler =(e)=>{
 		
@@ -166,9 +166,9 @@ function App()
 	return (
 	<div id="main">
 		<select onChange={onOptionChangeHandler} id="state">
-			<option>
+			{/* <option>
 				State name
-			</option>
+			</option> */}
 			{
 				states.map((option, index)=> {
 					return <option key={index} value={index}>{option.name} </option>
@@ -176,7 +176,7 @@ function App()
 			}
 		</select>
 		<select onChange={onCityChangeHandler} id="city">
-			<option>Select City </option>
+			{/* <option>Select City </option> */}
 			{
 				states[selectedState]?.city.map((option, index)=> {
 					return <option key={index} value={index}>{option.name}</option>
@@ -185,7 +185,7 @@ function App()
 			}
 		</select>
 		<select onChange={onLandChangeHandler} id="landmark">
-			<option>Select Landmark </option>
+			{/* <option>Select Landmark </option> */}
 			{
 				states[selectedState]?.city[selectedCity]?.landmarks.map((option, index)=> {
 					return <option key={index} value={index}>{option.name}</option>
