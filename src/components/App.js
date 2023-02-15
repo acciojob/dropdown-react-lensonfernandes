@@ -140,7 +140,7 @@ const states = [{
 
 function App() 
 {
-	const [selectedState, setSelectedState] = useState("");
+	const [selectedState, setSelectedState] = useState("Madhya Pradesh");
 	const [selectedCity, setSelectedCity] = useState("");
 	const [selectedLand, setSelectedLand] = useState("");
 
@@ -165,7 +165,7 @@ function App()
 	// Do not alter/remove main div
 	return (
 	<div id="main">
-		<select onChange={onOptionChangeHandler}>
+		<select onChange={onOptionChangeHandler} id="state">
 			<option>
 				State name
 			</option>
@@ -175,7 +175,7 @@ function App()
 				})
 			}
 		</select>
-		<select onChange={onCityChangeHandler}>
+		<select onChange={onCityChangeHandler} id="city">
 			<option>Select City </option>
 			{
 				states[selectedState]?.city.map((option, index)=> {
@@ -184,7 +184,7 @@ function App()
 			
 			}
 		</select>
-		<select onChange={onLandChangeHandler}>
+		<select onChange={onLandChangeHandler} id="landmark">
 			<option>Select Landmark </option>
 			{
 				states[selectedState]?.city[selectedCity]?.landmarks.map((option, index)=> {
@@ -193,6 +193,33 @@ function App()
 			
 			}
 		</select>
+		<div id="state-name">
+			{states[selectedState]?.name}
+		</div>
+		<div id="state-description">
+		{states[selectedState]?.description}
+		</div>
+		<div id="state-title">
+		{states[selectedState]?.name}
+		</div>
+		<div id="city-name">
+		{states[selectedState]?.city[selectedCity]?.name}
+		</div>
+		<div id="city-description">
+		{states[selectedState]?.city[selectedCity]?.description}
+		</div>
+		<div id="city-title">
+		{states[selectedState]?.city[selectedCity]?.name}
+		</div>
+		<div id="landmark-name">
+		{states[selectedState]?.city[selectedCity]?.landmarks[selectedLand]?.name}
+</div>
+<div id="landmark-description">
+{states[selectedState]?.city[selectedCity]?.landmarks[selectedLand]?.description}
+</div>
+<div id="landmark-title">
+{states[selectedState]?.city[selectedCity]?.landmarks[selectedLand]?.name}
+</div>
 	
 		{/* //<select>City</select>
 		//<select>Landmark</select> */}
